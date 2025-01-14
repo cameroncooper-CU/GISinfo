@@ -6,17 +6,43 @@
     <title>Guideline Change Management Process</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Tahoma, sans-serif;
             text-align: center;
             padding: 20px;
         }
-        .process-container {
+        h1 {
+            margin-bottom: 10px;
+            padding-bottom: 1px;
+        }
+
+        p.subtitle {
+            margin-top: -10px;
+        }
+
+        .process-container-toprow {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 50px;
-            margin: 20px auto;
+            gap: 80px;
+            margin-bottom: 0px;
+        }
+        .process-container-midrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 40px;
+            gap: 80px;
+            margin-bottom: 0px;
+        }
+        .process-container-btmrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 80px;
+            margin: 0px;
         }
         .process-step {
             display: flex;
@@ -33,7 +59,13 @@
             color: white;
             font-weight: bold;
             font-size: 16px;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
+            position: relative;
+        }
+        .circle svg {
+            position: absolute;
+            width: 50%;
+            height: 50%;
         }
         .update {
             background-color: #003f88;
@@ -58,30 +90,47 @@
             font-size: 18px;
             margin-top: 20px;
         }
+        div {
+            border: 1px solid #000;
+        }
     </style>
 </head>
 <body>
     <h1>The Guideline Change Management Process</h1>
-    <p>(Click each stage for more information)</p>
-    <div class="process-container">
+    <p class="subtitle">(Click each stage for more information)</p>
+    <div class="process-container-toprow">
         <div class="process-step">
-            <div class="circle update">Update</div>
-            <span class="arrow">&#x2794;</span>
+            <div class="circle update">
+                <img src="/assets/img/Update.svg" alt="Update Icon">
+                Update
+            </div>
         </div>
         <div class="process-step">
-            <div class="circle consult">Consult</div>
-            <span class="arrow">&#x2794;</span>
+            <div class="circle review">
+                <img src="/assets/img/Review.svg" alt="Review Icon">
+                Review
+            </div>
         </div>
         <div class="process-step">
-            <div class="circle review">Review</div>
-            <span class="arrow">&#x2794;</span>
+            <div class="circle release">
+                <img src="/assets/img/Release.svg" alt="Release Icon">
+                Release
+            </div>
+        </div>
+    </div>
+    <div class="process-container-midrow"> </div>
+    <div class="process-container-btmrow">
+        <div class="process-step">
+            <div class="circle consult">
+                <img src="/assets/img/Consult.svg" alt="Consult Icon">
+                Consult
+            </div>
         </div>
         <div class="process-step">
-            <div class="circle refine">Refine</div>
-            <span class="arrow">&#x2794;</span>
-        </div>
-        <div class="process-step">
-            <div class="circle release">Release</div>
+            <div class="circle refine">
+                <img src="/assets/img/Refine.svg" alt="Refine Icon">
+                Refine
+            </div>
         </div>
     </div>
     <p class="description">Need to make a change to a guideline? Have a new guideline to be published? Want to retire a current guideline? Start at Update.</p>
