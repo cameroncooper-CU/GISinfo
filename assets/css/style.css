@@ -1,14 +1,18 @@
-
         body {
             font-family: Tahoma, sans-serif;
             text-align: center;
             padding: 20px;
+            display: flex;
+            justify-content: center; /* Horizontally centre the container */
+            align-items: center; /* Vertically centre the container */
+            min-height: 100vh; /* Ensure the body spans the viewport height */
+            margin: 0; /* Remove default body margin */
         }
-
-        div.container {                        
-            float: left;
+        
+        div.container {
             width: 580px;
             border: 1px solid;
+            text-align: center; /* Keep contents aligned */
         }
 
         h1 {
