@@ -1,1 +1,150 @@
 
+        body {
+            font-family: Tahoma, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        div.container {                        
+            float: left;
+            width: 580px;
+            border: 1px solid;
+        }
+
+        h1 {
+            font-family: Tahoma, sans-serif;
+            font-size: large;
+            margin-bottom: 10px;
+            padding-bottom: 1px;
+        }
+
+        p.subtitle {
+            font-family: Tahoma, sans-serif;
+            font-size: small;
+            margin-top: -10px;
+        }
+
+        .process-container-toprow, .process-container-btmrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            column-gap: 120px;
+            row-gap: 0px;
+            position: relative;
+        }
+
+        .process-container-midrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 40px;
+            gap: 80px;
+            margin-bottom: 0px;
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .circle-title {
+            font-family: Baskerville, sans-serif;
+            text-align: center;
+            font-size: 12pt;
+            font-style: italic;
+            font-weight: lighter;
+            margin-top: 10px;
+        }
+
+        img.icon {
+            position: absolute;
+            height: 65px;
+            width: 65px;
+        }
+
+        .update {        
+            background-color: #024073;
+        }
+        .update:hover {
+            background-color: #022038;
+        }
+
+        .consult {
+            background-color: #F99F36;
+        }
+        .consult:hover {
+            background-color: #925b1b;
+        }
+
+        .review {
+            background-color: #00C5BB;
+        }
+
+        .review:hover {
+            background-color: #006b66;
+        }
+
+        .refine {
+            background-color: #FDC101;
+        }
+
+        .refine:hover {
+            background-color: #7c5f00;
+        }
+
+        .release {
+            background-color: #E55046;
+        }
+
+        .release:hover {
+            background-color: #832f29;
+        }
+
+        svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .arrow {
+            stroke: #002341;
+            stroke-dasharray: 6, 5;
+            stroke-linecap: round;
+            stroke-width: 2;
+            marker-end: url(#markerArrow);
+            marker-start: url(#markerDot)
+        }
+
+        .description {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        div {
+            border: 0px solid;
+        }
