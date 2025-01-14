@@ -19,14 +19,16 @@
             margin-top: -10px;
         }
 
-        .process-container-toprow {
+        .process-container-toprow, .process-container-btmrow {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 80px;
-            margin-bottom: 0px;
+            column-gap: 120px;
+            row-gap: 0px;
+            position: relative;
         }
+
         .process-container-midrow {
             display: flex;
             justify-content: center;
@@ -36,19 +38,13 @@
             gap: 80px;
             margin-bottom: 0px;
         }
-        .process-container-btmrow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 80px;
-            margin: 0px;
-        }
+
         .process-step {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .circle {
             width: 100px;
             height: 100px;
@@ -59,80 +55,139 @@
             color: white;
             font-weight: bold;
             font-size: 16px;
-            margin-bottom: 0px;
             position: relative;
         }
-        .circle svg {
+
+        .circle-title {
+            font-family: Baskerville, sans-serif;
+            text-align: center;
+            font-size: 14pt;
+            font-style: italic;
+            font-weight: lighter;
+            margin-top: 5px;
+        }
+
+        img.icon {
             position: absolute;
-            width: 50%;
-            height: 50%;
+            height: 65px;
+            width: 65px;
         }
+
         .update {
-            background-color: #003f88;
+            background-color: #024073;
         }
+
         .consult {
-            background-color: #ff9900;
+            background-color: #F99F36;
         }
+
         .review {
-            background-color: #28a745;
+            background-color: #00C5BB;
         }
+
         .refine {
-            background-color: #ffc107;
+            background-color: #FDC101;
         }
+
         .release {
-            background-color: #e63946;
+            background-color: #E55046;
         }
+
+        svg {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
         .arrow {
-            font-size: 24px;
-            margin: 10px;
+            stroke: #002341;
+            stroke-dasharray: 6, 5;
+            stroke-linecap: round;
+            stroke-width: 2;
+            marker-end: url(#markerArrow);
+            marker-start: url(#markerDot)
         }
+
         .description {
-            font-size: 18px;
+            font-size: 16px;
             margin-top: 20px;
         }
+
         div {
-            border: 1px solid #000;
+            border: 0px solid;
         }
+
+        div.container {            
+            width: 560px;
+            border: 0px solid;
+        }
+
     </style>
 </head>
 <body>
     <h1>The Guideline Change Management Process</h1>
     <p class="subtitle">(Click each stage for more information)</p>
+
+    
+<div class="container">
+    <svg width="100%" height="300">
+        <defs>
+            <marker id="markerArrow" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto">
+                <path d="M2,2 L2,8 L10,5 L2,2" style="fill: #002341;" />
+            </marker>
+            <marker id="markerDot" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                <circle cx="5" cy="5" r="3" style="fill: #002341;" />
+            </marker>
+        </defs>
+        <!-- Arrows with consistent geometry -->
+        <line x1="120" y1="225" x2="160" y2="280" class="arrow" /> <!-- Update to Review -->
+        <line x1="210" y1="285" x2="250" y2="230" class="arrow" /> <!-- Review to Release -->
+        <line x1="340" y1="225" x2="380" y2="280" class="arrow" /> <!-- Release to Consult -->
+        <line x1="430" y1="285" x2="470" y2="230" class="arrow" /> <!-- Consult to Refine -->
+    </svg>
     <div class="process-container-toprow">
         <div class="process-step">
             <div class="circle update">
-                <img src="/assets/img/Update.svg" alt="Update Icon">
-                Update
+                <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
             </div>
+            <div class="circle-title">Update</div>
         </div>
         <div class="process-step">
             <div class="circle review">
-                <img src="/assets/img/Review.svg" alt="Review Icon">
-                Review
+                <img class="icon" src="./assets/img/Committee.svg" alt="Review Icon">
             </div>
+            <div class="circle-title">Review</div>
         </div>
         <div class="process-step">
             <div class="circle release">
-                <img src="/assets/img/Release.svg" alt="Release Icon">
-                Release
+                <img class="icon" src="./assets/img/Release.svg" alt="Release Icon">
             </div>
+            <div class="circle-title">Release</div>
         </div>
     </div>
+
+
     <div class="process-container-midrow"> </div>
+
     <div class="process-container-btmrow">
         <div class="process-step">
             <div class="circle consult">
-                <img src="/assets/img/Consult.svg" alt="Consult Icon">
-                Consult
+                <img class="icon" src="./assets/img/Comment.svg" alt="Consult Icon">
             </div>
+            <div class="circle-title">Consult</div>
         </div>
         <div class="process-step">
             <div class="circle refine">
-                <img src="/assets/img/Refine.svg" alt="Refine Icon">
-                Refine
+                <img class="icon" src="./assets/img/Refine.svg" alt="Refine Icon">
             </div>
+            <div class="circle-title">Refine</div>
         </div>
     </div>
-    <p class="description">Need to make a change to a guideline? Have a new guideline to be published? Want to retire a current guideline?</p><p>Start at Update.</p>
+
+    <p class="description">Need to make a change to a guideline? Have a new guideline to be published? Want to retire a current guideline? <em><b>Start at Update.</b></em></p>
+</div>
 </body>
 </html>
