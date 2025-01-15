@@ -6,12 +6,13 @@
             justify-content: center; /* Horizontally centre the container */
             margin: 0; /* Remove default body margin */
         }
-
+        
         div.container {
-            width: 580px;
+            width: 730px;
             border: 1px solid;
             text-align: center; /* Keep contents aligned */
         }
+        
 
         h1 {
             font-family: Tahoma, sans-serif;
@@ -31,7 +32,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            column-gap: 120px;
+            column-gap: 160px;
             row-gap: 0px;
             position: relative;
         }
@@ -41,12 +42,13 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            height: 40px;
+            height: 35px;
             gap: 80px;
             margin-bottom: 0px;
         }
 
         .process-step {
+            border: 1px solid;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -90,8 +92,14 @@
         .update {        
             background-color: #024073;
         }
+
         .update:hover {
             background-color: #022038;
+        }
+
+        .circle.update-reduced:hover {
+            transform: scale(.75);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .consult {
@@ -149,4 +157,54 @@
 
         div {
             border: 0px solid;
+        }
+
+        .process-detail-container {
+            width: 700px;
+            height: 550px;
+            border: 3px solid;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center; /* Center text horizontally */
+            align-items: center;    /* Center text vertically */
+            color: #024073;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;     /* Required for absolute positioning of child elements */
+        }
+
+        .circle.update-reduced {
+            transform: scale(0.75);
+            background-color: #024073;
+            margin: 0;              /* Reset margin */
+            position: absolute;     /* Use absolute positioning */
+            top: 10px;              /* Position from the top of the parent container */
+            left: 10px;             /* Position from the left of the parent container */
+        }
+
+        /* Circle for the top right corner */
+        .circle.top-right {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F99F36; /* Example colour for distinction */
+            position: absolute;
+            top: 10px;              /* Position from the top */
+            right: 10px;            /* Position from the right */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .circle.top-right:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        div.detailed-desc-content {
+            width: 680px;
+            height: 350px;
+            border: 1px solid;
         }
