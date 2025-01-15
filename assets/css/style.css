@@ -6,6 +6,10 @@
             justify-content: center; /* Horizontally centre the container */
             margin: 0; /* Remove default body margin */
         }
+
+        a {
+            text-decoration: none;
+        }
         
         .container {
             display: flex;             /* Enables flexbox layout */
