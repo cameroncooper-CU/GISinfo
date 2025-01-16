@@ -6,13 +6,12 @@
     <title>Guideline Change Management Process</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        function updateArrowPositions() {
             const svg = document.querySelector('svg');
             const svgRect = svg.getBoundingClientRect();
             const arrows = document.querySelectorAll('line.arrow');
             const shortenBy = 65; // Length to shorten from each end
 
-            // Get circle centres in the specified manual order
             const manualOrder = [
                 document.querySelector('.circle.update'),
                 document.querySelector('.circle.consult'),
@@ -29,111 +28,108 @@
                 };
             };
 
-            // Map manual order to centre points
             const centres = manualOrder.map(getCircleCentre);
 
-            // Align and shorten arrows based on manual circle centres
             arrows.forEach((arrow, index) => {
                 if (index < centres.length - 1) {
                     const start = centres[index];
                     const end = centres[index + 1];
 
-                    // Calculate the direction vector
                     const dx = end.x - start.x;
                     const dy = end.y - start.y;
                     const length = Math.sqrt(dx * dx + dy * dy);
 
-                    // Calculate the new shortened positions
                     const ratio = shortenBy / length;
                     const newStartX = start.x + dx * ratio;
                     const newStartY = start.y + dy * ratio;
                     const newEndX = end.x - dx * ratio;
                     const newEndY = end.y - dy * ratio;
 
-                    // Update arrow positions
                     arrow.setAttribute('x1', newStartX);
                     arrow.setAttribute('y1', newStartY);
                     arrow.setAttribute('x2', newEndX);
                     arrow.setAttribute('y2', newEndY);
                 }
             });
-        });
+        }
 
+        document.addEventListener('DOMContentLoaded', () => {
+            updateArrowPositions(); // Initial setup
+            window.addEventListener('resize', updateArrowPositions); // Update on resize
+        });
     </script>
 </head>
 <body>
     <div class="container">
-    <h1>The Guideline Change Management Process</h1>
-    <p class="subtitle">(Click each stage for more information)</p>
+        <h1>The Guideline Change Management Process</h1>
+        <p class="subtitle">(Click each stage for more information)</p>
 
-    <svg width="100%" height="300">
-        <defs>
-            <marker id="markerArrow" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto">
-                <path d="M0,0 L5,5 L0,10" style="fill: none; stroke: black; stroke-width: 1;" />
-            </marker>
-            <marker id="markerDot" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-                <circle cx="5" cy="5" r="3" style="fill: #002341;" />
-            </marker>
-            <filter id="arrowShadowDown"  x="-25%" y="-25%" width="145%" height="145%">
-                <feDropShadow dx="-1.5" dy="1.5" stdDeviation="1.5" flood-opacity="0.5" />
-            </filter>
-            <filter id="arrowShadowUp"  x="-25%" y="-25%" width="145%" height="145%">
-                <feDropShadow dx="1.5" dy="1.5" stdDeviation="1.5" flood-opacity="0.5" />
-            </filter>
-        </defs>
-        <!-- Arrows with consistent geometry -->
-        <line  class="arrow" filter="url(#arrowShadowDown)"/> <!-- Update to Review -->
-        <line  class="arrow" filter="url(#arrowShadowUp)"/> <!-- Review to Release -->
-        <line  class="arrow" filter="url(#arrowShadowDown)"/> <!-- Release to Consult -->
-        <line  class="arrow" filter="url(#arrowShadowUp)"/> <!-- Consult to Refine -->
-    </svg>
-    <div class="process-container-toprow">
-        <div class="process-step">
-            <a href="Update.html">
-                <div class="circle update">
-                    <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
-                </div>
-                <div class="circle-title">Update</div>
-            </a>
+        <svg width="100%" height="300">
+            <defs>
+                <marker id="markerArrow" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto">
+                    <path d="M0,0 L5,5 L0,10" style="fill: none; stroke: black; stroke-width: 1;" />
+                </marker>
+                <marker id="markerDot" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                    <circle cx="5" cy="5" r="3" style="fill: #002341;" />
+                </marker>
+                <filter id="arrowShadowDown" x="-25%" y="-25%" width="145%" height="145%">
+                    <feDropShadow dx="-1.5" dy="1.5" stdDeviation="1.5" flood-opacity="0.5" />
+                </filter>
+                <filter id="arrowShadowUp" x="-25%" y="-25%" width="145%" height="145%">
+                    <feDropShadow dx="1.5" dy="1.5" stdDeviation="1.5" flood-opacity="0.5" />
+                </filter>
+            </defs>
+            <line class="arrow" filter="url(#arrowShadowDown)" />
+            <line class="arrow" filter="url(#arrowShadowUp)" />
+            <line class="arrow" filter="url(#arrowShadowDown)" />
+            <line class="arrow" filter="url(#arrowShadowUp)" />
+        </svg>
+        <div class="process-container-toprow">
+            <div class="process-step">
+                <a href="Update.html">
+                    <div class="circle update">
+                        <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
+                    </div>
+                    <div class="circle-title">Update</div>
+                </a>
+            </div>
+            <div class="process-step">
+                <a href="Committee.html">
+                    <div class="circle review">
+                        <img class="icon" src="./assets/img/Committee.svg" alt="Review Icon">
+                    </div>
+                    <div class="circle-title">Review</div>
+                </a>
+            </div>
+            <div class="process-step">
+                <a href="Release.html">
+                    <div class="circle release">
+                        <img class="icon" src="./assets/img/Release.svg" alt="Release Icon">
+                    </div>
+                    <div class="circle-title">Release</div>
+                </a>
+            </div>
         </div>
-        <div class="process-step">
-            <a href="Committee.html">
-                <div class="circle review">
-                    <img class="icon" src="./assets/img/Committee.svg" alt="Review Icon">
-                </div>
-                <div class="circle-title">Review</div>
-            </a>
+        <div class="process-container-midrow"> </div>
+        <div class="process-container-btmrow">
+            <div class="process-step">
+                <a href="Consult.html">
+                    <div class="circle consult">
+                        <img class="icon" src="./assets/img/Comment.svg" alt="Consult Icon">
+                    </div>
+                    <div class="circle-title">Consult</div>
+                </a>
+            </div>
+            <div class="process-step">
+                <a href="Refine.html">
+                    <div class="circle refine">
+                        <img class="icon" src="./assets/img/Refine.svg" alt="Refine Icon">
+                    </div>
+                    <div class="circle-title">Refine</div>
+                </a>
+            </div>
         </div>
-        <div class="process-step">
-            <a href="Release.html">
-                <div class="circle release">
-                    <img class="icon" src="./assets/img/Release.svg" alt="Release Icon">
-                </div>
-                <div class="circle-title">Release</div>
-            </a>
-        </div>
+        <p class="description">Need to make a change to a guideline? Have a new guideline to be published? Want to retire a current guideline? <em><b>Start at Update.</b></em></p>
     </div>
-    <div class="process-container-midrow"> </div>
-    <div class="process-container-btmrow">
-        <div class="process-step">
-            <a href="Consult.html">
-                <div class="circle consult">
-                    <img class="icon" src="./assets/img/Comment.svg" alt="Consult Icon">
-                </div>
-                <div class="circle-title">Consult</div>
-            </a>    
-        </div>
-        <div class="process-step">
-            <a href="Refine.html">
-                <div class="circle refine">
-                    <img class="icon" src="./assets/img/Refine.svg" alt="Refine Icon">
-                </div>
-                <div class="circle-title">Refine</div>
-            </a>
-        </div>
-    </div>
-
-    <p class="description">Need to make a change to a guideline? Have a new guideline to be published? Want to retire a current guideline? <em><b>Start at Update.</b></em></p>
-</div>
 </body>
 </html>
