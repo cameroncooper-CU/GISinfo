@@ -24,7 +24,7 @@
         }
         
         h1 {
-            font-family: Tahoma, sans-serif;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: 20pt;
             font-weight: 500;
             margin-bottom: 10px;
@@ -34,8 +34,8 @@
         }
 
         h2 {
-            font-family: Tahoma, sans-serif;
-            font-size: 20pt;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16pt;
             font-weight: 100;
             margin-bottom: 0px;
             margin-top: 0px;
@@ -54,14 +54,15 @@
         }
 
         p {
-            font-family: Tahoma, sans-serif;
-            font-size: 11pt;
-           
+            font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+            text-align: center;
+            font-size: 12pt;
+            font-weight: normal;
             color: black;
         }
 
         p.subtitle {
-            font-family: Tahoma, sans-serif;
+            
             font-size: small;
             margin-top: -10px;
         }
@@ -212,36 +213,83 @@
             position: relative;       /* Ensures absolute positioning for child elements works */
         }
 
-        .circle.update-reduced {
-            transform: scale(0.75);
-            background-color: #024073;
-            margin: 0;              /* Reset margin */
-            position: absolute;     /* Use absolute positioning */
-            top: -13px;              /* Position from the top of the parent container */
-            left: -13px;             /* Position from the left of the parent container */
-            cursor:default;
+        .process-detail-container.consult {
+            color: #F99F36;
+            background-color: #fff;
         }
 
-        /* Circle for the top right corner */
-        .circle.top-right {
-            transform: scale(0.75);
+        .process-detail-container.review {
+            color: #00C5BB;
+            background-color: #fff;
+        }
+
+        .process-detail-container.refine {
+            color: #FDC101;
+            background-color: #fff;
+        }
+
+        .process-detail-container.release {
+            color: #E55046;
+            background-color: #fff;
+        }
+
+        .circle-top-left {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #024073; 
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transform: scale(0.75);
+            background-color: #fff;
             position: absolute;
-            top: -13px;              /* Position from the top */
-            right: -13px;            /* Position from the right */
-            cursor: pointer;
+            top: -13px;
+            left: -13px;
+            margin: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
         }
 
-        .circle.top-right:hover {
-            
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        .circle-top-left.update {
+            background-color: #024073;
+        }
+
+        .circle-top-left.consult {
+            background-color: #F99F36;
+        }
+
+        .circle-top-left.review {
+            background-color: #00C5BB;
+        }
+
+        .circle-top-left.refine {
+            background-color: #FDC101;
+        }
+
+        .circle-top-left.release {
+            background-color: #E55046;
+        }
+
+
+        /* Circle for the top right corner */
+        .circle-top-right {
+            transform: scale(0.4);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 6px solid #000;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;            
+            position: absolute;
+            top: -25px;              /* Position from the top */
+            right: -25px;            /* Position from the right */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .circle.top-right svg {
@@ -250,6 +298,113 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        
+        
+        /* Circle for the top right corner ------------------------- Update Page*/
+        .circle-top-right.update{
+            border-color: #024073;
+        }
+
+        .circle-top-right.update:hover {
+            background-color: #fff;
+            border-color: #022038;
+            fill: #022038;
+            stroke: #022038;
+        }
+
+        .circle-top-right.update svg {
+            fill: #024073;
+            stroke: #024073;
+        }
+        .circle-top-right.update svg:hover {
+            fill: #022038;
+            stroke: #022038;
+        }
+
+        /* Circle for the top right corner -------------------------- Consult Page*/
+        .circle-top-right.consult {
+            border-color: #F99F36;
+        }
+
+        .circle-top-right.consult:hover {
+            background-color: #fff;
+            border-color: #925b1b;
+            fill: #925b1b;
+            stroke: #925b1b;
+        }
+
+        .circle-top-right.consult svg {
+            fill: #F99F36;
+            stroke: #F99F36;
+        }
+        .circle-top-right.consult svg:hover {
+            fill: #925b1b;
+            stroke: #925b1b;
+        }
+
+        /* Circle for the top right corner ------------------------------ Review Page*/
+        .circle-top-right.review {
+            border-color: #00C5BB;
+        }
+
+        .circle-top-right.review:hover {
+            background-color: #fff;
+            border-color: #006b66;
+            fill: #006b66;
+            stroke: #006b66;
+        }
+
+        .circle-top-right.review svg {
+            fill: #00C5BB;
+            stroke: #00C5BB;
+        }
+        .circle-top-right.review svg:hover {
+            fill: #006b66;
+            stroke: #006b66;
+        }
+
+
+        /* Circle for the top right corner ----------------------------- Refine Page*/
+        .circle-top-right.refine {
+            border-color: #FDC101;
+        }
+
+        .circle-top-right.refine:hover {
+            background-color: #fff;
+            border-color: #7c5f00;
+            fill: #7c5f00;
+            stroke: #7c5f00;
+        }
+
+        .circle-top-right.refine svg {
+            fill: #FDC101;
+            stroke: #FDC101;
+        }
+        .circle-top-right.refine svg:hover {
+            fill: #7c5f00;
+            stroke: #7c5f00;
+        }
+
+        /* Circle for the top right corner -------------------------- Release Page*/
+        .circle-top-right.release {
+            border-color: #E55046;
+        }
+
+        .circle-top-right.release:hover {
+            background-color: #fff;
+            border-color: #832f29;
+            fill: #832f29;
+            stroke: #832f29;
+        }
+
+        .circle-top-right.release svg {
+            fill: #E55046;
+            stroke: #E55046;
+        }
+        .circle-top-right.release svg:hover {
+            fill: #832f29;
+            stroke: #832f29;
+        }     
 
         .text-content {
             position: absolute;
@@ -258,11 +413,7 @@
             transform: translateX(-50%); /* Centre horizontally */
             text-align: center;
             width: 75%; /* Optional: Adjust width to fit content between circles */
-           /* border: 1px solid; */
-            font-family: Tahoma, sans-serif;
-            text-align: center;
-            font-size: 11pt;
-            font-weight: lighter;
+           /* border: 1px solid; */            
         }
         
         .link-button {
