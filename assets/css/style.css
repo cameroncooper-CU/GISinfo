@@ -16,7 +16,7 @@
             flex-direction: column;    /* Stacks child elements vertically */
             align-items: center;       /* Centres child elements horizontally */
             width: 730px;
-            min-width: 600px;
+            min-width: 730px;
             border: 0px solid;
             text-align: center;
             margin: 0 auto;            /* Horizontally centre the container itself */
