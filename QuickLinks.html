@@ -84,19 +84,22 @@
 <!-- Script to Disable Current Page Link -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        try {
-            // Get the parent window's URL
-            const parentUrl = window.parent.location.href.split('?')[0].split('#')[0];
+        // Function to get query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const currentPage = getQueryParam('page');
+        if (currentPage) {
             const links = document.querySelectorAll('.quick-link');
 
             links.forEach(function(link) {
-                const linkUrl = link.href.split('?')[0].split('#')[0];
-                if (linkUrl === parentUrl) {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage === currentPage) {
                     link.classList.add('active');
                 }
             });
-        } catch (error) {
-            console.warn("Unable to access parent URL. Ensure the iframe and parent are on the same origin.");
         }
     });
 </script>
@@ -106,15 +109,15 @@
 <div class="quick-links-container">
     <h2>Quick Links</h2>
     <div class="quick-links">
-        <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines" target="_parent" class="quick-link">
+        <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines" target="_parent" class="quick-link" data-page="home">
             <div class="icon">🏠</div>
             <span>Home</span>
         </a>
-        <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines/SitePages/MyGuidelines.aspx" target="_parent" class="quick-link">
+        <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines/SitePages/MyGuidelines.aspx" target="_parent" class="quick-link" data-page="myguide">
             <div class="icon">📄</div>
             <span>My Guidelines</span>
         </a>
-        <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines/SitePages/AllGuidelines.aspx" target="_parent" class="quick-link">
+        <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines/SitePages/AllGuidelines.aspx" target="_parent" class="quick-link" data-page="allguide">
             <div class="icon">📚</div>
             <span>All Guidelines</span>
         </a>
