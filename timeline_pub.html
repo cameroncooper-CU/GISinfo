@@ -5,45 +5,64 @@
   <meta name="viewport" content="width=750, initial-scale=1.0">
   <title>Timeline Bars with Fixed Width</title>
   <style>
-    /* Basic page styling */
+    /* --------------------------------------------------
+       Basic Page & Container Setup
+    -------------------------------------------------- */
     body {
       margin: 0;
-      padding: 0;
+	  padding: 0;
+	  padding-top: 50px;
+      
       font-family: Arial, sans-serif;
       background-color: #FFFFFF;
     }
-    /* Container with a fixed width */
     .timeline-container {
       width: 800px;
       margin: 50px auto;
       text-align: center;
       position: relative;
     }
-    /* The wrapper contains both timeline bars and the markers/labels.
-       Its height is exactly the combined height of the two bars (25px + 25px = 50px). */
     .timeline-wrapper {
       position: relative;
-      height: 50px;
-      margin-bottom: 80px; /* extra space for markers and labels */
+      height: 50px; /* Combined height of top and bottom bars (25px + 25px) */
+      margin-bottom: 80px; /* Space for markers and labels */
     }
-    /* Common styling for timeline bars */
+    
+    /* --------------------------------------------------
+       Committee Text (Above Top Bar)
+       Rotation updated to -45°
+    -------------------------------------------------- */
+    .committee-text {
+      position: absolute;
+      top: -15px;
+      left: 4px;
+      transform: rotate(-45deg);
+      transform-origin: top left;
+      font-size: 12px;
+      font-weight: bold;
+      color: black;
+      white-space: nowrap;
+    }
+    
+    /* --------------------------------------------------
+       Timeline Bars
+    -------------------------------------------------- */
     .timeline {
       width: 100%;
       height: 25px;
       border: 2px solid black;
       box-sizing: border-box;
     }
-    /* Top timeline bar (25px high) */
     .timeline.top {
       display: flex;
-      border-bottom: none; /* remove bottom border */
+      border-bottom: none;
     }
-    /* Bottom timeline bar (25px high) */
     .timeline.bottom {
       display: flex;
-      border-top: none; /* remove top border */
+      border-top: none;
     }
-    /* Generic styling for timeline segments */
+    
+    /* Generic segment styling */
     .timeline .segment {
       display: flex;
       align-items: center;
@@ -51,7 +70,8 @@
       font-weight: 500;
       font-size: 12px;
     }
-    /* Top bar segments */
+    
+    /* Top Bar Segments */
     .timeline.top .seg-1 {
       width: 50%;
       background-color: lightgrey;
@@ -60,9 +80,14 @@
       width: 30%;
       background-color: firebrick;
       color: white;
-      position: relative; /* required for pseudo-element positioning */
+      position: relative;
     }
-    /* Add diamond shapes to the start and end of the Change Freeze div */
+    .timeline.top .seg-3 {
+      width: 20%;
+      background-color: lightgrey;
+    }
+    
+    /* Diamonds on Change Freeze */
     .timeline.top .changefrz::before,
     .timeline.top .changefrz::after {
       content: "";
@@ -72,23 +97,18 @@
       background-color: black;
       transform: rotate(45deg);
     }
-    /* Left diamond on Change Freeze */
     .timeline.top .changefrz::before {
       left: -7px;
       top: 50%;
       transform: translateY(-50%) rotate(45deg);
     }
-    /* Right diamond on Change Freeze */
     .timeline.top .changefrz::after {
       right: -7px;
       top: 50%;
       transform: translateY(-50%) rotate(45deg);
     }
-    .timeline.top .seg-3 {
-      width: 20%;
-      background-color: lightgrey;
-    }
-    /* Bottom bar segments */
+    
+    /* Bottom Bar Segments */
     .timeline.bottom .changeperiod.left {
       width: 35%;
       background-color: #024073;
@@ -114,70 +134,56 @@
       background-color: #024073;
       color: white;
     }
-    /* Month labels styling — positioned relative to the overall timeline-wrapper */
+    
+    /* --------------------------------------------------
+       Markers & Labels
+    -------------------------------------------------- */
     .timeline-label {
       position: absolute;
-      top: 70px; /* wrapper is 50px tall, plus a 20px gap */
+      top: 70px; /* 50px wrapper height + 20px gap */
       font-size: 16px;
       font-weight: 700;
       writing-mode: vertical-rl;
       text-orientation: mixed;
     }
-    .timeline-label.january {
-      left: -8px;
-    }
-    .timeline-label.june {
-      left: 49%;
-    }
-    .timeline-label.july {
-      left: 64%;
-    }
-    .timeline-label.december {
-      right: -8px;
-    }
-    /* Marker lines styling — these are direct children of the timeline-wrapper */
+    .timeline-label.january { left: -8px; }
+    .timeline-label.june    { left: 49%; }
+    .timeline-label.july    { left: 64%; }
+    .timeline-label.december{ right: -8px; }
+    
     .marker {
       position: absolute;
       width: 3px;
       background-color: black;
     }
-    /* For January and December: markers start at the top of the top bar (top: 0)
-       and extend 15px below the bottom bar (total height = 50px + 15px = 65px) */
     .marker.january,
     .marker.december {
       top: 0;
       height: 65px;
     }
-    /* For June and July: markers start at the underside of the bottom bar (top: 50px)
-       and extend 15px below (height: 15px) */
     .marker.june,
     .marker.july {
       top: 50px;
       height: 15px;
     }
-    .marker.january {
-      left: 0;
-    }
-    .marker.june {
-      left: 50%;
-    }
-    .marker.july {
-      left: 65%;
-    }
-    .marker.december {
-      right: 0;
-    }
-    /* Extra diamond just after the January marker line */
+    .marker.january { left: 0; }
+    .marker.june    { left: 50%; }
+    .marker.july    { left: 65%; }
+    .marker.december{ right: 0; }
+    
     .extra-diamond.january {
       position: absolute;
       width: 14px;
       height: 14px;
       background-color: black;
       transform: translateY(-50%) rotate(45deg);
-      left: 4px; /* positioned just to the right of the January marker line (which starts at 0 and is 3px wide) */
-      top: 12.5px; /* vertically centered in the top bar (25px high) */
+      left: 4px;
+      top: 12.5px;
     }
-    /* Circle style as provided */
+    
+    /* --------------------------------------------------
+       Circles Under Bottom Bar Segments
+    -------------------------------------------------- */
     .circle {
       width: 65px;
       height: 65px;
@@ -188,41 +194,35 @@
       color: black;
       font-weight: bold;
       font-size: 16px;
-      position: relative;
+      position: absolute;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
-    /* Circles positioned centrally under each bottom bar segment */
     .circle.circle-left {
-      position: absolute;
       top: 60px;
       left: 17.5%;
       transform: translateX(-50%);
       background-color: #024073;
     }
     .circle.circle-feedback {
-      position: absolute;
       top: 60px;
       left: 42.5%;
       transform: translateX(-50%);
       background-color: #F99F36;
     }
     .circle.circle-review {
-      position: absolute;
       top: 60px;
       left: 57.5%;
       transform: translateX(-50%);
       background-color: #00C5BB;
     }
     .circle.circle-editing {
-      position: absolute;
       top: 60px;
       left: 72.5%;
       transform: translateX(-50%);
       background-color: #FDC101;
     }
     .circle.circle-right {
-      position: absolute;
       top: 60px;
       left: 90%;
       transform: translateX(-50%);
@@ -232,15 +232,18 @@
 </head>
 <body>
   <div class="timeline-container">
-    <h1>Timeline</h1>
     <div class="timeline-wrapper">
-      <!-- Top timeline bar -->
+      <!-- Committee Text -->
+      <div class="committee-text">Guideline Oversight<br>Board Meets</div>
+      
+      <!-- Top Timeline Bar -->
       <div class="timeline top">
         <div class="segment seg-1"></div>
         <div class="segment changefrz">Change Freeze</div>
         <div class="segment seg-3"></div>
       </div>
-      <!-- Bottom timeline bar -->
+      
+      <!-- Bottom Timeline Bar -->
       <div class="timeline bottom">
         <div class="segment changeperiod left">Change Period</div>
         <div class="segment feedbackperiod">Feedback Period</div>
@@ -248,19 +251,21 @@
         <div class="segment editingperiod">Editing Period</div>
         <div class="segment changeperiod right">Change Period</div>
       </div>
-      <!-- Extra diamond just after the January marker line -->
+      
+      <!-- Extra Diamond & Markers -->
       <div class="extra-diamond january"></div>
-      <!-- Marker lines -->
       <div class="marker january"></div>
       <div class="marker june"></div>
       <div class="marker july"></div>
       <div class="marker december"></div>
-      <!-- Month labels -->
+      
+      <!-- Month Labels -->
       <div class="timeline-label january">January</div>
       <div class="timeline-label june">June</div>
       <div class="timeline-label july">July</div>
       <div class="timeline-label december">December</div>
-      <!-- Circles under each bottom bar segment -->
+      
+      <!-- Circles Under Bottom Bar Segments -->
       <div class="circle circle-left">CP</div>
       <div class="circle circle-feedback">FP</div>
       <div class="circle circle-review">RP</div>
