@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -94,6 +94,16 @@
       color: white;
       position: relative;
     }
+    /* Additional text over the Change Freeze bar */
+    .timeline.top .changefrz .changefrz-additional {
+      position: absolute;
+      top: -30px;  /* Moved further up to avoid clashing */
+      left: 50%;
+      transform: translateX(-50%);
+      color: black;
+      font-size: 12px;
+      white-space: nowrap;
+    }
     .timeline.top .seg-3 {
       width: 20%;
       background-color: lightgrey;
@@ -171,15 +181,10 @@
       top: 0;
       height: 65px;
     }
-    .marker.june,
-    .marker.july {
-      top: 50px;
-      height: 15px;
-    }
     .marker.january { left: 0; }
     .marker.june    { left: 50%; }
     .marker.july    { left: 65%; }
-    .marker.december { right: -0; }
+    .marker.december { right: 0; }
     
     .extra-diamond.january {
       position: absolute;
@@ -239,11 +244,11 @@
       background-color: #024073;
     }
     img.icon {
-            position: absolute;
-            height: 50px;
-            width: 50px;
-        }
-
+      position: absolute;
+      height: 50px;
+      width: 50px;
+    }
+  
   </style>
 </head>
 <body>
@@ -255,7 +260,12 @@
       <!-- Top Timeline Bar -->
       <div class="timeline top">
         <div class="segment seg-1"></div>
-        <div class="segment changefrz">Change Freeze</div>
+        <div class="segment changefrz">
+          <div class="changefrz-additional">
+            No New Guideline<br>Change Proposals Accepted
+          </div>
+          Change Freeze
+        </div>
         <div class="segment seg-3"></div>
       </div>
       
@@ -283,21 +293,17 @@
       
       <!-- Circles Under Bottom Bar Segments -->
       <div class="circle circle-left">
-          <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
+        <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
       </div>
-
       <div class="circle circle-feedback">
         <img class="icon" src="./assets/img/Comment.svg" alt="Consult Icon">
       </div>
-
       <div class="circle circle-review">
         <img class="icon" src="./assets/img/Committee.svg" alt="Review Icon">
       </div>
-
       <div class="circle circle-editing">
         <img class="icon" src="./assets/img/Refine.svg" alt="Refine Icon">
       </div>
-
       <div class="circle circle-right">
         <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
       </div>
