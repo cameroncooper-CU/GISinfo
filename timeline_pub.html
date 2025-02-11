@@ -13,7 +13,7 @@
       padding: 0;
       padding-top: 50px;
       font-family: Arial, sans-serif;
-      background-color: #FFFFFF;
+      background-color: none;
     }
     .timeline-container {
       width: 800px;
@@ -238,6 +238,11 @@
       transform: translateX(-50%);
       background-color: #024073;
     }
+    img.icon {
+            position: absolute;
+            height: 65px;
+            width: 65px;
+        }
   </style>
 </head>
 <body>
@@ -276,7 +281,10 @@
       <div class="timeline-label december">December</div>
       
       <!-- Circles Under Bottom Bar Segments -->
-      <div class="circle circle-left">CP</div>
+      <div class="circle circle-left">
+          <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
+      </div>
+
       <div class="circle circle-feedback">FP</div>
       <div class="circle circle-review">RP</div>
       <div class="circle circle-editing">EP</div>
