@@ -10,9 +10,8 @@
     -------------------------------------------------- */
     body {
       margin: 0;
-	  padding: 0;
-	  padding-top: 50px;
-      
+      padding: 0;
+      padding-top: 50px;
       font-family: Arial, sans-serif;
       background-color: #FFFFFF;
     }
@@ -29,23 +28,39 @@
     }
     
     /* --------------------------------------------------
-       Committee Text (Above Top Bar)
-       Rotation updated to -45°
+       Text Elements (Rotated)
     -------------------------------------------------- */
-    .committee-text {
+    /* Committee text (rotated -45°) */
+    .committee-text,
+    /* New texts over diamonds (rotated -45°) share many properties */
+    .final-drafts-text,
+    .updated-guidelines-text {
       position: absolute;
-      top: -15px;
-      left: 4px;
-      transform: rotate(-45deg);
-      transform-origin: top left;
       font-size: 12px;
       font-weight: bold;
       color: black;
       white-space: nowrap;
+      text-align: left;
+      transform-origin: top left;
+    }
+    .committee-text {
+      top: -20px;
+      left: 4px;
+      transform: rotate(-45deg);
+    }
+    .final-drafts-text {
+      top: -20px;
+      left: 393px; /* (50% of 800 = 400) minus 7 */
+      transform: rotate(-45deg);
+    }
+    .updated-guidelines-text {
+      top: -20px;
+      left: 647px; /* (400 + 240 = 640) plus 7 */
+      transform: rotate(-45deg);
     }
     
     /* --------------------------------------------------
-       Timeline Bars
+       Timeline Bars & Segments
     -------------------------------------------------- */
     .timeline {
       width: 100%;
@@ -61,8 +76,6 @@
       display: flex;
       border-top: none;
     }
-    
-    /* Generic segment styling */
     .timeline .segment {
       display: flex;
       align-items: center;
@@ -70,7 +83,6 @@
       font-weight: 500;
       font-size: 12px;
     }
-    
     /* Top Bar Segments */
     .timeline.top .seg-1 {
       width: 50%;
@@ -86,7 +98,6 @@
       width: 20%;
       background-color: lightgrey;
     }
-    
     /* Diamonds on Change Freeze */
     .timeline.top .changefrz::before,
     .timeline.top .changefrz::after {
@@ -107,7 +118,6 @@
       top: 50%;
       transform: translateY(-50%) rotate(45deg);
     }
-    
     /* Bottom Bar Segments */
     .timeline.bottom .changeperiod.left {
       width: 35%;
@@ -136,7 +146,7 @@
     }
     
     /* --------------------------------------------------
-       Markers & Labels
+       Markers & Month Labels
     -------------------------------------------------- */
     .timeline-label {
       position: absolute;
@@ -149,7 +159,7 @@
     .timeline-label.january { left: -8px; }
     .timeline-label.june    { left: 49%; }
     .timeline-label.july    { left: 64%; }
-    .timeline-label.december{ right: -8px; }
+    .timeline-label.december { right: -8px; }
     
     .marker {
       position: absolute;
@@ -169,7 +179,7 @@
     .marker.january { left: 0; }
     .marker.june    { left: 50%; }
     .marker.july    { left: 65%; }
-    .marker.december{ right: 0; }
+    .marker.december { right: -0; }
     
     .extra-diamond.january {
       position: absolute;
@@ -271,6 +281,10 @@
       <div class="circle circle-review">RP</div>
       <div class="circle circle-editing">EP</div>
       <div class="circle circle-right">CP</div>
+      
+      <!-- New 45° Text Over Diamonds -->
+      <div class="final-drafts-text">Final Drafts<br>Submitted</div>
+      <div class="updated-guidelines-text">Updated Guidelines<br>Released</div>
     </div>
   </div>
 </body>
