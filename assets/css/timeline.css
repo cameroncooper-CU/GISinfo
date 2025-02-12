@@ -1,0 +1,291 @@
+    /* --------------------------------------------------
+       Basic Page & Container Setup
+    -------------------------------------------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+      background-color: none;
+    }
+    .timeline-container {
+      width: 800px;
+      margin: 50px auto;
+      text-align: center;
+      position: relative;
+      /* Merged properties from timeline-wrapper */
+      height: 50px; /* Combined height of top and bottom bars (25px + 25px) */
+      margin-bottom: 80px; /* Space for markers and labels */
+    }
+    
+    /* --------------------------------------------------
+       Text Elements (Rotated)
+    -------------------------------------------------- */
+    .committee-text,
+    .final-drafts-text,
+    .updated-guidelines-text,
+    .process-text {
+        position: absolute;
+        font-size: 12px;
+        font-weight: bold;
+        color: black;
+        white-space: nowrap;
+        text-align: left;
+        transform-origin: top left;
+    }
+    .committee-text {
+        top: -20px;
+        left: 4px;
+        transform: rotate(-45deg);
+    }
+    .final-drafts-text {
+        top: -20px;
+        left: 393px; /* (50% of 800 = 400) minus 7 */
+        transform: rotate(-45deg);
+    }
+    .updated-guidelines-text {
+        top: -20px;
+        left: 647px; /* (400 + 240 = 640) plus 7 */
+        transform: rotate(-45deg);
+    }
+
+    .process-text.process01 {
+        top: -30px;
+        left: 10px;
+        transform: rotate(-45deg);        
+        font-size: 16px;
+    }
+
+    .process-text.process02 {
+        top: -15px;
+        left: 110px;       
+        font-size: 12px;
+    }
+
+    .process-text.process03 {
+        top: -30px;
+        left: 390px;
+        transform: rotate(-45deg);        
+        font-size: 16px;
+    }
+
+    .process-text.process04 {
+        top: -30px;
+        left: 510px;
+        transform: rotate(-45deg);        
+        font-size: 16px;
+    }
+
+    .process-text.process05 {
+        top: -30px;
+        left: 630px;
+        transform: rotate(-45deg);        
+        font-size: 16px;
+    }
+
+    .process-text.process06 {
+        top: -30px;
+        left: 670px;       
+        font-size: 12px;
+        text-align: center;
+    }
+
+    
+    /* --------------------------------------------------
+       Timeline Bars & Segments
+    -------------------------------------------------- */
+    .timeline {
+      width: 100%;
+      height: 25px;
+      border: 2px solid black;
+      box-sizing: border-box;
+    }
+    .timeline.top {
+      display: flex;
+      border-bottom: none;
+    }
+    .timeline.bottom {
+      display: flex;
+      border-top: none;
+    }
+    .timeline .segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    /* Top Bar Segments */
+    .timeline.top .seg-1 {
+      width: 50%;
+      background-color: lightgrey;
+    }
+    .timeline.top .changefrz {
+      width: 30%;
+      background-color: firebrick;
+      color: white;
+      position: relative;
+    }
+    /* Additional text over the Change Freeze bar */
+    .timeline.top .changefrz .changefrz-noteabove {
+      position: absolute;
+      top: -30px;  
+      left: 50%;
+      transform: translateX(-50%);
+      color: black;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .timeline.top .seg-3 {
+      width: 20%;
+      background-color: lightgrey;
+    }
+
+    .diamond, .process {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: black;
+      transform: translateY(-200%) rotate(45deg);      
+      top: 12.5px;
+    }
+
+    .diamond.january {
+      left: 4px;
+    }
+
+    .diamond.finaldraft {
+      left: 49.15%;
+    }
+
+    .diamond.release {
+      left: 78.98%;
+    }
+
+    .process {
+        background-color: #ffffff; 
+        border: 2px solid #000; 
+    }
+
+    .process.schedule {
+        left: 8px;
+    }
+
+    .process.confirm {
+        left: 385px;
+    }
+
+    .process.engage {
+        left: 508px;
+    }
+
+    .process.release {
+        left: 630px;
+    }
+
+
+    /* Bottom Bar Segments */
+    .timeline.bottom .changeperiod.left {
+      width: 35%;
+      background-color: #024073;
+      color: white;
+    }
+    .timeline.bottom .feedbackperiod {
+      width: 15%;
+      background-color: #F99F36;
+      color: black;
+    }
+    .timeline.bottom .reviewperiod {
+      width: 15%;
+      background-color: #00C5BB;
+      color: black;
+    }
+    .timeline.bottom .editingperiod {
+      width: 15%;
+      background-color: #FDC101;
+      color: black;
+    }
+    .timeline.bottom .changeperiod.right {
+      width: 20%;
+      background-color: #024073;
+      color: white;
+    }
+    
+    /* --------------------------------------------------
+       Markers & Month Labels
+    -------------------------------------------------- */
+    .timeline-label {
+      position: absolute;
+      top: 70px; /* 50px container height + 20px gap */
+      font-size: 16px;
+      font-weight: 700;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    .timeline-label.january { left: -8px; }
+    .timeline-label.june    { left: 49%; top: 55px;}
+    .timeline-label.july    { left: 64%; top: 55px;}
+    .timeline-label.december { right: -8px; }
+    
+    .marker {
+      position: absolute;
+      width: 3px;
+      background-color: black;
+      top: 0;
+      height: 65px;
+    }
+
+    .marker.january { left: 0; }
+    .marker.december { right: 0; }
+    
+    
+    
+    /* --------------------------------------------------
+       Circles Under Bottom Bar Segments
+    -------------------------------------------------- */
+    .circle {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;      
+      position: absolute;
+    }
+    .circle.update-left {
+      top: 60px;
+      left: 17.5%;
+      transform: translateX(-50%);
+      background-color: #024073;
+    }
+    .circle.consult {
+      top: 60px;
+      left: 42.5%;
+      transform: translateX(-50%);
+      background-color: #F99F36;
+    }
+    .circle.review {
+      top: 60px;
+      left: 57.5%;
+      transform: translateX(-50%);
+      background-color: #00C5BB;
+    }
+    .circle.refine {
+      top: 60px;
+      left: 72.5%;
+      transform: translateX(-50%);
+      background-color: #FDC101;
+    }
+    .circle.update-right {
+      top: 60px;
+      left: 90%;
+      transform: translateX(-50%);
+      background-color: #024073;
+    }
+    img.icon {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+    }
+ 
