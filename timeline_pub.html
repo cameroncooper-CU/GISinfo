@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -20,9 +20,7 @@
       margin: 50px auto;
       text-align: center;
       position: relative;
-    }
-    .timeline-wrapper {
-      position: relative;
+      /* Merged properties from timeline-wrapper */
       height: 50px; /* Combined height of top and bottom bars (25px + 25px) */
       margin-bottom: 80px; /* Space for markers and labels */
     }
@@ -30,9 +28,7 @@
     /* --------------------------------------------------
        Text Elements (Rotated)
     -------------------------------------------------- */
-    /* Committee text (rotated -45°) */
     .committee-text,
-    /* New texts over diamonds (rotated -45°) share many properties */
     .final-drafts-text,
     .updated-guidelines-text {
       position: absolute;
@@ -95,9 +91,9 @@
       position: relative;
     }
     /* Additional text over the Change Freeze bar */
-    .timeline.top .changefrz .changefrz-additional {
+    .timeline.top .changefrz .changefrz-noteabove {
       position: absolute;
-      top: -30px;  /* Moved further up to avoid clashing */
+      top: -30px;  
       left: 50%;
       transform: translateX(-50%);
       color: black;
@@ -108,26 +104,28 @@
       width: 20%;
       background-color: lightgrey;
     }
-    /* Diamonds on Change Freeze */
-    .timeline.top .changefrz::before,
-    .timeline.top .changefrz::after {
-      content: "";
+
+    .diamond {
       position: absolute;
       width: 14px;
       height: 14px;
       background-color: black;
-      transform: rotate(45deg);
+      transform: translateY(-50%) rotate(45deg);      
+      top: 12.5px;
     }
-    .timeline.top .changefrz::before {
-      left: -7px;
-      top: 50%;
-      transform: translateY(-50%) rotate(45deg);
+
+    .diamond.january {
+      left: 4px;
     }
-    .timeline.top .changefrz::after {
-      right: -7px;
-      top: 50%;
-      transform: translateY(-50%) rotate(45deg);
+
+    .diamond.finaldraft {
+      left: 49.15%;
     }
+
+    .diamond.release {
+      left: 78.98%;
+    }
+
     /* Bottom Bar Segments */
     .timeline.bottom .changeperiod.left {
       width: 35%;
@@ -160,41 +158,29 @@
     -------------------------------------------------- */
     .timeline-label {
       position: absolute;
-      top: 70px; /* 50px wrapper height + 20px gap */
+      top: 70px; /* 50px container height + 20px gap */
       font-size: 16px;
       font-weight: 700;
       writing-mode: vertical-rl;
       text-orientation: mixed;
     }
     .timeline-label.january { left: -8px; }
-    .timeline-label.june    { left: 49%; }
-    .timeline-label.july    { left: 64%; }
+    .timeline-label.june    { left: 49%; top: 55px;}
+    .timeline-label.july    { left: 64%; top: 55px;}
     .timeline-label.december { right: -8px; }
     
     .marker {
       position: absolute;
       width: 3px;
       background-color: black;
-    }
-    .marker.january,
-    .marker.december {
       top: 0;
       height: 65px;
     }
+
     .marker.january { left: 0; }
-    .marker.june    { left: 50%; }
-    .marker.july    { left: 65%; }
     .marker.december { right: 0; }
     
-    .extra-diamond.january {
-      position: absolute;
-      width: 14px;
-      height: 14px;
-      background-color: black;
-      transform: translateY(-50%) rotate(45deg);
-      left: 4px;
-      top: 12.5px;
-    }
+    
     
     /* --------------------------------------------------
        Circles Under Bottom Bar Segments
@@ -206,38 +192,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: black;
-      font-weight: bold;
-      font-size: 16px;
+      color: black;      
       position: absolute;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
     }
-    .circle.circle-left {
+    .circle.update-left {
       top: 60px;
       left: 17.5%;
       transform: translateX(-50%);
       background-color: #024073;
     }
-    .circle.circle-feedback {
+    .circle.consult {
       top: 60px;
       left: 42.5%;
       transform: translateX(-50%);
       background-color: #F99F36;
     }
-    .circle.circle-review {
+    .circle.review {
       top: 60px;
       left: 57.5%;
       transform: translateX(-50%);
       background-color: #00C5BB;
     }
-    .circle.circle-editing {
+    .circle.refine {
       top: 60px;
       left: 72.5%;
       transform: translateX(-50%);
       background-color: #FDC101;
     }
-    .circle.circle-right {
+    .circle.update-right {
       top: 60px;
       left: 90%;
       transform: translateX(-50%);
@@ -253,65 +235,64 @@
 </head>
 <body>
   <div class="timeline-container">
-    <div class="timeline-wrapper">
-      <!-- Committee Text -->
-      <div class="committee-text">Guideline Oversight<br>Board Meets</div>
-      
-      <!-- Top Timeline Bar -->
-      <div class="timeline top">
-        <div class="segment seg-1"></div>
-        <div class="segment changefrz">
-          <div class="changefrz-additional">
-            No New Guideline<br>Change Proposals Accepted
-          </div>
-          Change Freeze
+    <!-- 45 degree text -->
+    <div class="committee-text">Guideline Oversight<br>Board Meets</div>
+    <div class="final-drafts-text">Final Drafts<br>Submitted</div>
+    <div class="updated-guidelines-text">Updated Guidelines<br>Released</div>
+    
+    <!-- Top Timeline Bar -->
+    <div class="timeline top">
+      <div class="segment seg-1"></div>
+      <div class="segment changefrz">
+        <div class="changefrz-noteabove">
+          No New Guideline<br>Change Proposals Accepted
         </div>
-        <div class="segment seg-3"></div>
+        Change Freeze
       </div>
-      
-      <!-- Bottom Timeline Bar -->
-      <div class="timeline bottom">
-        <div class="segment changeperiod left">Change Period</div>
-        <div class="segment feedbackperiod">Feedback Period</div>
-        <div class="segment reviewperiod">Review Period</div>
-        <div class="segment editingperiod">Editing Period</div>
-        <div class="segment changeperiod right">Change Period</div>
-      </div>
-      
-      <!-- Extra Diamond & Markers -->
-      <div class="extra-diamond january"></div>
-      <div class="marker january"></div>
-      <div class="marker june"></div>
-      <div class="marker july"></div>
-      <div class="marker december"></div>
-      
-      <!-- Month Labels -->
-      <div class="timeline-label january">January</div>
-      <div class="timeline-label june">June</div>
-      <div class="timeline-label july">July</div>
-      <div class="timeline-label december">December</div>
-      
-      <!-- Circles Under Bottom Bar Segments -->
-      <div class="circle circle-left">
-        <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
-      </div>
-      <div class="circle circle-feedback">
-        <img class="icon" src="./assets/img/Comment.svg" alt="Consult Icon">
-      </div>
-      <div class="circle circle-review">
-        <img class="icon" src="./assets/img/Committee.svg" alt="Review Icon">
-      </div>
-      <div class="circle circle-editing">
-        <img class="icon" src="./assets/img/Refine.svg" alt="Refine Icon">
-      </div>
-      <div class="circle circle-right">
-        <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
-      </div>
-      
-      <!-- New 45° Text Over Diamonds -->
-      <div class="final-drafts-text">Final Drafts<br>Submitted</div>
-      <div class="updated-guidelines-text">Updated Guidelines<br>Released</div>
+      <div class="segment seg-3"></div>
     </div>
+    
+    <!-- Bottom Timeline Bar -->
+    <div class="timeline bottom">
+      <div class="segment changeperiod left">Change Period</div>
+      <div class="segment feedbackperiod">Feedback Period</div>
+      <div class="segment reviewperiod">Review Period</div>
+      <div class="segment editingperiod">Editing Period</div>
+      <div class="segment changeperiod right">Change Period</div>
+    </div>
+    
+    <!-- Diamonds & Markers -->
+    <div class="diamond january"></div>
+    <div class="diamond finaldraft"></div>
+    <div class="diamond release"></div>
+
+    <div class="marker january"></div>
+    <div class="marker december"></div>
+    
+    <!-- Month Labels -->
+    <div class="timeline-label january">January</div>
+    <div class="timeline-label june">June</div>
+    <div class="timeline-label july">July</div>
+    <div class="timeline-label december">December</div>
+    
+    <!-- Circles Under Bottom Bar Segments -->
+    <div class="circle update-left">
+      <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
+    </div>
+    <div class="circle consult">
+      <img class="icon" src="./assets/img/Comment.svg" alt="Consult Icon">
+    </div>
+    <div class="circle review">
+      <img class="icon" src="./assets/img/Committee.svg" alt="Review Icon">
+    </div>
+    <div class="circle refine">
+      <img class="icon" src="./assets/img/Refine.svg" alt="Refine Icon">
+    </div>
+    <div class="circle update-right">
+      <img class="icon" src="./assets/img/UnderChange.svg" alt="Update Icon">
+    </div>
+    
+
   </div>
 </body>
 </html>
