@@ -5,162 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Update a Guideline</title>
   <style>
-    :root {
-      --page-bg: transparent;
-      --text: #1f1f1f;
-      --muted: #555555;
-      --panel-bg: #ffffff;
-      --border: #dddddd;
-      --accent: #f5b800;
-      --accent-soft: #fff4c7;
-      --accent-dark: #7a5700;
-      --row-bg: #fffdf6;
-      --row-bg-alt: #f9fbff;
-      --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      background: var(--page-bg);
-      color: var(--text);
+      color: #1f1f1f;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 17px;
       line-height: 1.45;
+      background: transparent;
     }
 
     main {
-      width: min(760px, calc(100% - 48px));
+      max-width: 760px;
       margin: 14px auto;
-      padding: 28px 18px 18px;
-      background: var(--panel-bg);
+      padding: 26px 22px;
+      background: #ffffff;
       border: 1px solid #eeeeee;
       border-radius: 8px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     }
 
     h1 {
-      margin: 0;
+      margin: 0 0 18px;
       font-size: 24px;
       line-height: 1.2;
       text-align: center;
     }
 
     .steps {
-      position: relative;
-      max-width: 100%;
-      margin-top: 22px;
-    }
-
-    .steps::before {
-      content: "";
-      position: absolute;
-      top: 20px;
-      bottom: 20px;
-      left: 31px;
-      width: 3px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, var(--accent), #d7d7d7);
-    }
-
-    .steps ol {
-      counter-reset: guideline-step;
-      display: grid;
-      gap: 9px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .steps li {
-      counter-increment: guideline-step;
-      position: relative;
-      min-height: 44px;
-      padding: 12px 16px 12px 66px;
-      background: var(--row-bg);
-      border: 1px solid var(--border);
+    .step {
+      display: table;
+      width: 100%;
+      margin: 0 0 10px;
+      padding: 12px 14px;
+      background: #fffdf6;
+      border: 1px solid #dddddd;
+      border-left: 5px solid #f5b800;
       border-radius: 6px;
     }
 
-    .steps li:nth-child(even) {
-      background: var(--row-bg-alt);
+    .step:nth-child(even) {
+      background: #f9fbff;
     }
 
-    .steps li::before {
-      content: counter(guideline-step);
-      position: absolute;
-      top: 50%;
-      left: 15px;
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      display: table-cell;
+      width: 38px;
+      vertical-align: top;
+    }
+
+    .step-number span {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border: 2px solid #f5b800;
       border-radius: 50%;
-      background: var(--panel-bg);
-      border: 3px solid var(--accent);
-      color: var(--accent-dark);
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
-      font-weight: 700;
-      transform: translateY(-50%);
+      color: #7a5700;
+      font-weight: bold;
+      line-height: 24px;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .step-text {
+      display: table-cell;
+      vertical-align: middle;
     }
 
     a {
       color: #a66f00;
       text-decoration: underline;
     }
-
-    a:focus-visible {
-      outline: 3px solid #222222;
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        font-size: 16px;
-      }
-
-      main {
-        width: min(100% - 28px, 920px);
-        margin: 14px auto;
-        padding: 24px 14px 14px;
-      }
-
-      h1 {
-        font-size: 22px;
-      }
-
-      .steps::before {
-        left: 29px;
-      }
-
-      .steps li {
-        min-height: 0;
-        padding: 12px 14px 12px 62px;
-      }
-
-      .steps li::before {
-        top: 50%;
-        left: 14px;
-      }
-    }
   </style>
 </head>
 <body>
   <main>
     <h1>Steps to managing your Guidelines:</h1>
-    <section class="steps" aria-label="Changing or updating a guideline steps">
-      <ol>
-        <li>Download and complete the Guideline Change Request Form.</li>
-        <li>Send the completed form to <a href="mailto:drawingservices@curtin.edu.au">drawingservices@curtin.edu.au</a> to start the endorsement process.</li>
-        <li>Once the change has been endorsed, you will receive links to an editable copy of the current guideline together with a stakeholder feedback register, if applicable.</li>
-        <li>Complete your updates to the guideline and the stakeholder feedback register on SharePoint.</li>
-        <li>Notify <a href="mailto:drawingservices@curtin.edu.au">drawingservices@curtin.edu.au</a> to start the final approval process, if required.</li>
-        <li>You will be advised when your guideline has gone live on the PF&amp;D Properties website.</li>
-      </ol>
-    </section>
+    <ol class="steps">
+      <li class="step">
+        <div class="step-number"><span>1</span></div>
+        <div class="step-text">Download and complete the Guideline Change Request Form.</div>
+      </li>
+      <li class="step">
+        <div class="step-number"><span>2</span></div>
+        <div class="step-text">Send the completed form to <a href="mailto:drawingservices@curtin.edu.au">drawingservices@curtin.edu.au</a> to start the endorsement process.</div>
+      </li>
+      <li class="step">
+        <div class="step-number"><span>3</span></div>
+        <div class="step-text">Once the change has been endorsed, you will receive links to an editable copy of the current guideline together with a stakeholder feedback register, if applicable.</div>
+      </li>
+      <li class="step">
+        <div class="step-number"><span>4</span></div>
+        <div class="step-text">Complete your updates to the guideline and the stakeholder feedback register on SharePoint.</div>
+      </li>
+      <li class="step">
+        <div class="step-number"><span>5</span></div>
+        <div class="step-text">Notify <a href="mailto:drawingservices@curtin.edu.au">drawingservices@curtin.edu.au</a> to start the final approval process, if required.</div>
+      </li>
+      <li class="step">
+        <div class="step-number"><span>6</span></div>
+        <div class="step-text">You will be advised when your guideline has gone live on the PF&amp;D Properties website.</div>
+      </li>
+    </ol>
   </main>
 </body>
 </html>
