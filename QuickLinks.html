@@ -6,22 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Links</title>
 
-    <!-- Styles for Quick Links -->
     <style>
+        :root {
+            --gold: #F5B800;
+            --gold-dark: #A66F00;
+            --ink: #1F1F1F;
+            --muted: #6B7280;
+            --border: #E8E8E8;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { background: transparent; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: transparent;
+        }
+
         .quick-links-container {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            max-width: 290px;
-            margin: 0 auto;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: Arial, sans-serif;
+            max-width: 300px;
+            margin: 14px auto;
+            padding: 30px 24px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
         }
 
         .quick-links-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+            margin: 0 0 20px;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ink);
+            text-align: left;
         }
 
         .quick-links {
@@ -33,85 +52,74 @@
         .quick-link {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            gap: 14px;
+            padding: 12px 14px;
+            background: #FAFAFA;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
             text-decoration: none;
-            color: #333;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            color: var(--ink);
+            transition: background 0.15s ease, box-shadow 0.15s ease;
         }
 
         .quick-link:hover:not(.active) {
-            background-color: #f0f0f0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
         }
 
         .quick-link .icon {
-            font-size: 24px;
-            margin-right: 12px;
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background: #ffffff;
+            font-size: 14px;
+            line-height: 26px;
+            text-align: center;
         }
 
         .quick-link span {
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 600;
         }
 
         .quick-link.active {
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
+            border-left-color: var(--muted);
         }
 
         .quick-link.active .icon {
+            border-color: var(--muted);
             filter: grayscale(100%);
         }
 
-        /* Responsive Design */
         @media (max-width: 600px) {
-            .quick-links-container {
-                padding: 15px;
-                max-width: 100%;
-            }
-
-            .quick-link {
-                padding: 8px 12px;
-            }
-
-            .quick-link .icon {
-                font-size: 20px;
-                margin-right: 10px;
-            }
-
-            .quick-link span {
-                font-size: 14px;
-            }
+            .quick-links-container { padding: 20px; max-width: 100%; }
+            .quick-link { padding: 10px 12px; }
         }
     </style>
 
-<!-- Script to Disable Current Page Link -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Function to get query parameters
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        const currentPage = getQueryParam('page');
-        if (currentPage) {
-            const links = document.querySelectorAll('.quick-link');
-
-            links.forEach(function(link) {
-                const linkPage = link.getAttribute('data-page');
-                if (linkPage === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+            const currentPage = getQueryParam('page');
+            if (currentPage) {
+                document.querySelectorAll('.quick-link').forEach(function(link) {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body>
-<!-- Quick Links Section -->
 <div class="quick-links-container">
     <h2>Quick Links</h2>
     <div class="quick-links">
@@ -124,16 +132,14 @@
             <span>Guideline Change Proposal Form</span>
         </a>
         <a href="https://curtin.sharepoint.com/sites/Staff_PFDGuidelines/Shared%20Documents/Stakeholder%20Feedback%20Register.xlsx?download=1" target="_blank" class="quick-link">
-            <div class="icon">✏️</div>
+            <div class="icon">📊</div>
             <span>Stakeholder Feedback Register</span>
         </a>
         <a href="https://teams.microsoft.com/l/team/19:NoBoVlpN3QF24rV1qkDUk8qhDFwHT2yxJ7UnvPQjmu41%40thread.tacv2/conversations?tenantId=5a740cd7-5768-4d09-ae13-f706b09fa22c" target="_blank" class="quick-link">
             <div class="icon">💼</div>
-            <span>PF&D Guidelines MS Team</span>
+            <span>PF&amp;D Guidelines MS Team</span>
         </a>
     </div>
 </div>
 </body>
 </html>
-
-
